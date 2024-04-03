@@ -41,20 +41,10 @@ async function generateDALLEImage() {
       1,
       "256x200"
     );
-    imageurl = response.data.data[0].url;
+    
 
     try {
-        // Download the image
-        await downloadImage(imageurl, 'inputimage.jpg');
-
-        // Make request to DALL-E API
-        const response = await axios.post(apiUrl, {
-            image: fs.readFileSync('inputimage.jpg', { encoding: 'base64' })
-        });
-
-        // Save the generated image
-        fs.writeFileSync('outputimage.jpg', response.data.image, 'base64');
-
+        imageurl = response.data.data[0].url;
         console.log('Image generated successfully!');
     } catch (error) {
         console.error('Error:', error);
