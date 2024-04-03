@@ -48,7 +48,7 @@ async function generateDALLEImage() {
 
     try {
         // Download the image
-        await downloadImage(imageUrl, 'inputimage.jpg');
+        await downloadImage(imageurl, 'inputimage.jpg');
 
         // Make request to DALL-E API
         const response = await axios.post(apiUrl, {
