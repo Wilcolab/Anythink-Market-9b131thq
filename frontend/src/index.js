@@ -33,18 +33,15 @@ async function downloadImage(url, path) {
 
 // Function to call DALL-E API
 async function generateDALLEImage() {
-    //const apiUrl = 'YOUR_DALLE_API_URL'; // Replace with your DALL-E API endpoint
 
-    //const imageUrl = 'URL_TO_YOUR_IMAGE'; // Replace with the URL of the image you want to use
-
-    const response = await openai.createImage({
-      model: "dall-e-3",
-      prompt: "a white siamese cat",
-      n: 1,
-      size: "256x256",
-    });
-
-    const imageurl = response.data.data[0].url;
+    const response = await openai.createImageEdit(
+      fs.createReadStream("../imgs/dog256.png"),
+      "dall-e-2",
+      "dog",
+      1,
+      "256x200"
+    );
+    imageurl = response.data.data[0].url;
 
     try {
         // Download the image
